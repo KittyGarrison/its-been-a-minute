@@ -19,14 +19,39 @@ Open the app, see one person, reach out with a ready starter, capture a quick no
 - After five, show a great job screen, small link, keep going
 
 ## MVP scope, hackathon
-- Contact card, name, photo, phone, birthday, tags, last contacted
+- Contact card: 
+    - Info: Name, Birth date, Phone number, Last contact date, Follow-up date, Photo, Notes (FF), Context tags (FF)
+    - Buttons: Snooze, Contact, Cancel, Undo (brings back last swiped card)
+- Tapping the Connect cta button triggers a flip animation with card flip (thwipp) sound
+- The card turns over, the photo shrinks and shows the ctas:
+    - copy starter prompt, 
+    - open SMS
+    - initiate a call – initiate a call (hot link)
+    - snooze / skip / done
+- Resting spot screen (?)
+- "Great Job" Screen. "You reconnected today", "Keep Going" (optional) (after you meet your minimum, a congratualtions (think perfect tile placement in Dorfromantik)
+- Contact import from CSV (google has csv export support for all users) 
+- Draw from a deck of cards: one chunk at time. number of cards at a time before a resting spot screen
+- Contact management: narrow down from many. Multiple skips, remove, suggestion, notification
 - Daily stack, one card at a time, buttons for reach out, snooze, skip, optional swipe as enhancement
 - Priority rules, birthdays this week, weeks since last contact, due follow ups
 - Message starters library, short and friendly, copy to clipboard, tel link
-- Notes, quick prompts, optional follow up date
-- Lightweight progress, contacts reached today, this week
+- Notes
+- Quick prompts. Easy copy convo prompt ex. "its been a min.. source
 - Gentle guardrails, daily cap, no feed, no vanity counts
 - Simple import, CSV with name, phone, birthday, tags
+- Animation of your deck of contacts being shuffled then presented
+
+## Forward Features Out of MVP Scope:
+- Follow up date
+- Lightweight progress, contacts reached today, this week, stats and badges page
+- Check in streak
+- Mini-game: 4 hidden contact cards, choose one to reach out to!
+- Every interaction leaves a small thread — a note, memory, or quote — that you can revisit later
+- Notes on Person. Title, Content, Reminder(?)
+- Calendar integration. when events/birthdays come up on the calendar, have a reminder/notice in the app
+- Context Tags: with context view that filter cards. Examples: phone call, text, importance, birthday(?)
+- Themes: light mode/dark mode, seasonal, user custom
 
 ## Feature Notes
 - One decision at a time
@@ -79,3 +104,20 @@ Open the app, see one person, reach out with a ready starter, capture a quick no
 - Starter tone, how many to include on day one
 - Follow up defaults, date shortcuts, today, next week, two weeks
 - Badge names and thresholds, keep uplifting, avoid pressure
+
+## Google contact model
+First Name,Middle Name,Last Name,Phonetic First Name,Phonetic Middle Name,Phonetic Last Name,Name Prefix,Name Suffix,Nickname,File As,Organization Name,Organization Title,Organization Department,Birthday,Notes,Photo,Labels,E-mail 1 - Label,E-mail 1 - Value,E-mail 2 - Label,E-mail 2 - Value,E-mail 3 - Label,E-mail 3 - Value,Phone 1 - Label,Phone 1 - Value,Phone 2 - Label,Phone 2 - Value,Address 1 - Label,Address 1 - Formatted,Address 1 - Street,Address 1 - City,Address 1 - PO Box,Address 1 - Region,Address 1 - Postal Code,Address 1 - Country,Address 1 - Extended Address,Address 2 - Label,Address 2 - Formatted,Address 2 - Street,Address 2 - City,Address 2 - PO Box,Address 2 - Region,Address 2 - Postal Code,Address 2 - Country,Address 2 - Extended Address,Relation 1 - Label,Relation 1 - Value,Website 1 - Label,Website 1 - Value
+
+## Tech Stack
+Backend
+Python
+pandas: data manipulation library
+Fast API, uvicorn(server)
+google-API-python-client
+Docker for deployment
+Google Contacts API
+API link: https://developers.google.com/people/v1/contacts
+
+Frontend
+JS, Typescript, React
+Vercel for deployment
