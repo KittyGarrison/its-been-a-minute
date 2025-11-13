@@ -1,6 +1,6 @@
 const ConfigIcon = () => {
   return (
-    <svg width="200px" height="200px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor">
+    <svg width="200px" height="200px" viewBox="0 0 32 32" version="1.1" fill="currentColor">
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
       <g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g>

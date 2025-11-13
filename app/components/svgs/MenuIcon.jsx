@@ -1,7 +1,7 @@
 const MenuIcon = () => {
   return (
     <svg stroke="currentColor"
-      fill="none" stroke-width="0" viewBox="0 0 24 24" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg">
+      fill="none" stroke-width="0" viewBox="0 0 24 24" height="200px" width="200px">
       <path d="M8 6.9834C7.44772 6.9834 7 7.43111 7 7.9834C7 8.53568 7.44772 8.9834 8 8.9834H16C16.5523 8.9834 17 8.53568 17 7.9834C17 7.43111 16.5523 6.9834 16 6.9834H8Z" fill="currentColor"
       ></path>
       <path
