@@ -21,7 +21,8 @@ Open the app, see one person, reach out with a ready starter, capture a quick no
 ## MVP scope, hackathon
 - Contact card: 
     - Info: Name, Birth date, Phone number, Last contact date, Follow-up date, Photo, Notes (FF), Context tags (FF)
-    - Buttons: Snooze, Contact, Cancel, Undo (brings back last swiped card)
+    
+    - Buttons: Snooze, Contact, Cancel
 - Tapping the Connect cta button triggers a flip animation with card flip (thwipp) sound
 - The card turns over, the photo shrinks and shows the ctas:
     - copy starter prompt, 
@@ -52,6 +53,7 @@ Open the app, see one person, reach out with a ready starter, capture a quick no
 - Calendar integration. when events/birthdays come up on the calendar, have a reminder/notice in the app
 - Context Tags: with context view that filter cards. Examples: phone call, text, importance, birthday(?)
 - Themes: light mode/dark mode, seasonal, user custom
+- Undo Button in Card (brings back last swiped card)
 
 ## Feature Notes
 - One decision at a time
@@ -118,6 +120,19 @@ Docker for deployment
 Google Contacts API
 API link: https://developers.google.com/people/v1/contacts
 
-Frontend
-JS, Typescript, React
-Vercel for deployment
+* What are we building with? 
+    * HeroUI: https://www.heroui.com/
+        * An established UI framework that'll give us basic components. i.e. buttons, accordions.
+        * Focus on accessibility - lots of it is baked in, check the component props.
+    * TailwindCSS: https://tailwindcss.com/
+        * Enables customization of the Hero components
+        * ex site utilizing HeroUI https://myjobquest.io 
+    * NextJS: https://nextjs.org/
+        * A full stack provider. Made by Vercel and is the React framework. 
+        * Will this work with planned backend? @Ciara Williams 
+        * React with TS
+            * React is the UI framework.
+            * TypeScript is a programming language.
+        * enables integration with vercel
+    * Context API (state management): https://react.dev/reference/react/useContext
+    * Vercel: https://vercel.com/
