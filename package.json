@@ -16,7 +16,8 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwindcss": "^4.1.16",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@heroui/react": "^2.7.9"
   },
   "devDependencies": {
     "@types/node": "^20",
