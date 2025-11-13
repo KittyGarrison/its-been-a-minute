@@ -1,0 +1,13 @@
+{
+    "user":{
+        "type":"object", 
+        "id":"integer", 
+        "first":"string", 
+        "last":"string",
+        "email":"string",
+        "password":"string", 
+        "contacts":{
+            "type":"object" 
+        }
+    }
+}

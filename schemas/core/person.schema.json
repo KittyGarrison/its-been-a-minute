@@ -1,0 +1,36 @@
+{
+    "person":{
+        "type":"object", 
+        "id":"integer", 
+        "first":"string", 
+        "last":"string", 
+        "phone":"string", 
+        "photo":{
+            "title": "Image Data",
+            "type": "object",
+            "properties": {
+                "content_type": {
+                    "type": "string",
+                    "enum": ["image/png", "image/jpeg", "image/gif"]
+                },
+                "data": {
+                    "type": "string",
+                    "contentEncoding": "base64",
+                    "contentMediaType": { "$data": "1/content_type" }
+                }
+            }
+        }, 
+        "birthdate":{
+            "type":"string",
+            "format":"date-time"
+        }, 
+        "lastContacted":{
+            "type":"string", 
+            "format":"date-time"
+        }, 
+        "lastDismissed":{
+            "type":"string", 
+            "format":"date-time"
+        }
+    }
+}
