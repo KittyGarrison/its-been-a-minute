@@ -1,13 +1,19 @@
 {
     "user":{
         "type":"object", 
-        "id":"integer", 
-        "first":"string", 
-        "last":"string",
-        "email":"string",
-        "password":"string", 
-        "contacts":{
-            "type":"object" 
-        }
+        "properties": {
+            "id": { "type": "integer" }, 
+            "first": { "type": "string" }, 
+            "last":{ "type": "string" },
+            "email":{ "type": "string", "format": "email" },
+            "password":{ "type": "string" }, 
+            "contacts":{
+                "type": "array",
+                "items": {
+                        "$ref": "./person.schema.json#/person"
+                    }
+            }
+        },
+        "required": ["id", "first", "last", "email"]
     }
 }

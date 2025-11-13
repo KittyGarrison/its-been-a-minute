@@ -4,10 +4,10 @@ export type Person = {
     first:string, 
     last:string,
     phone:string,
-    photo:string,
+    photo?:string,
     birthdate:string,
-    lastContacted:string,
-    lastDismissed:string,
+    lastContacted?:string,
+    lastDismissed?:string,
 };
 
 export type User = {
@@ -16,5 +16,5 @@ export type User = {
     last:string, 
     email:string,
     password?:string,
-    contacts: Person[], //array of Person objects
+    contacts?: Person[], //array of Person objects
 };

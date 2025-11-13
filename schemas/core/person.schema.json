@@ -1,36 +1,42 @@
 {
     "person":{
         "type":"object", 
-        "id":"integer", 
-        "first":"string", 
-        "last":"string", 
-        "phone":"string", 
-        "photo":{
-            "title": "Image Data",
-            "type": "object",
-            "properties": {
-                "content_type": {
-                    "type": "string",
-                    "enum": ["image/png", "image/jpeg", "image/gif"]
-                },
-                "data": {
-                    "type": "string",
-                    "contentEncoding": "base64",
-                    "contentMediaType": { "$data": "1/content_type" }
+        "properties": {
+            "id":{ "type": "integer" }, 
+            "first":{ "type": "string" }, 
+            "last":{ "type": "string" }, 
+            "phone":{ 
+                "type": "string", 
+                "pattern": "^\\+[1-9]\\d{1,14}$",
+                "description": "international phone number format, e.g. +14155552671"}, 
+            "photo":{
+                "title": "Image Data",
+                "type": "object",
+                "properties": {
+                    "content_type": {
+                        "type": "string",
+                        "enum": ["image/png", "image/jpeg", "image/gif"]
+                    },
+                    "data": {
+                        "type": "string",
+                        "contentEncoding": "base64",
+                        "contentMediaType": { "$data": "1/content_type" }
+                    }
                 }
+            }, 
+            "birthdate":{
+                "type":"string",
+                "format":"date"
+            }, 
+            "lastContacted":{
+                "type":"string", 
+                "format":"date"
+            }, 
+            "lastDismissed":{
+                "type":"string", 
+                "format":"date"
             }
-        }, 
-        "birthdate":{
-            "type":"string",
-            "format":"date"
-        }, 
-        "lastContacted":{
-            "type":"string", 
-            "format":"date"
-        }, 
-        "lastDismissed":{
-            "type":"string", 
-            "format":"date"
-        }
+        },
+        "required": ["id", "first", "last", "phone", "birthdate"]
     }
 }
