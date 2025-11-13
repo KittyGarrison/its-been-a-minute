@@ -22,15 +22,15 @@
         }, 
         "birthdate":{
             "type":"string",
-            "format":"date-time"
+            "format":"date"
         }, 
         "lastContacted":{
             "type":"string", 
-            "format":"date-time"
+            "format":"date"
         }, 
         "lastDismissed":{
             "type":"string", 
-            "format":"date-time"
+            "format":"date"
         }
     }
 }
