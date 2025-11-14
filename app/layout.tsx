@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ContactsProvider } from "./context/ContactsContext";
 
 export const metadata: Metadata = {
-  title: "It's  been a minute",
+  title: "It's Been a Minute",
   description: "I missed your face!",
 };
 
@@ -13,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <ContactsProvider>
+          {children}
+        </ContactsProvider>
+      </body>
     </html>
   );
 }

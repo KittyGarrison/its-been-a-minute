@@ -1,0 +1,35 @@
+{
+    "user":{
+        "type":"object", 
+        "id":"integer", 
+        "first":"string", 
+        "last":"string", 
+        "contacts":{
+            "type":"object", 
+            "id":"integer"
+        }
+    },
+    "person":{
+        "type":"object", 
+        "id":"integer", 
+        "first":"string", 
+        "last":"string", 
+        "phone":"string", 
+        "photo":{
+            "type":"string", 
+            "format":"uri"
+        }, 
+        "birthdate":{
+            "type":"string",
+            "format":"date-time"
+        }, 
+        "lastContacted":{
+            "type":"string", 
+            "format":"date-time"
+        }, 
+        "lastDismissed":{
+            "type":"string", 
+            "format":"date-time"
+        }
+    }
+}
