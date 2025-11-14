@@ -1,0 +1,94 @@
+{
+  "contacts": [
+    {
+      "id": 101,
+      "first": "Ava",
+      "last": "Henderson",
+      "phone": "+14155550101",
+      "birthdate": "1992-06-14",
+      "lastContacted": "2025-05-02",
+      "lastDismissed": "2025-03-18"
+    },
+    {
+      "id": 102,
+      "first": "Marcus",
+      "last": "Reid",
+      "phone": "+14155550102",
+      "birthdate": "1989-11-03",
+      "lastContacted": "2025-04-27",
+      "lastDismissed": "2025-03-05"
+    },
+    {
+      "id": 103,
+      "first": "Elena",
+      "last": "Martinez",
+      "phone": "+14155550103",
+      "birthdate": "1995-02-21",
+      "lastContacted": "2025-05-10",
+      "lastDismissed": "2025-04-01"
+    },
+    {
+      "id": 104,
+      "first": "Darius",
+      "last": "Coleman",
+      "phone": "+14155550104",
+      "birthdate": "1990-09-08",
+      "lastContacted": "2025-04-30",
+      "lastDismissed": "2025-02-22"
+    },
+    {
+      "id": 105,
+      "first": "Jasmine",
+      "last": "Wong",
+      "phone": "+14155550105",
+      "birthdate": "1993-12-19",
+      "lastContacted": "2025-05-12",
+      "lastDismissed": "2025-04-15"
+    },
+    {
+      "id": 106,
+      "first": "Samuel",
+      "last": "Okafor",
+      "phone": "+14155550106",
+      "birthdate": "1988-04-12",
+      "lastContacted": "2025-05-08",
+      "lastDismissed": "2025-03-29"
+    },
+    {
+      "id": 107,
+      "first": "Nia",
+      "last": "Thompson",
+      "phone": "+14155550107",
+      "birthdate": "1996-08-02",
+      "lastContacted": "2025-04-25",
+      "lastDismissed": "2025-02-18"
+    },
+    {
+      "id": 108,
+      "first": "Ethan",
+      "last": "Brooks",
+      "phone": "+14155550108",
+      "birthdate": "1991-01-30",
+      "lastContacted": "2025-05-11",
+      "lastDismissed": "2025-03-27"
+    },
+    {
+      "id": 109,
+      "first": "Layla",
+      "last": "Singh",
+      "phone": "+14155550109",
+      "birthdate": "1994-07-19",
+      "lastContacted": "2025-04-28",
+      "lastDismissed": "2025-03-03"
+    },
+    {
+      "id": 110,
+      "first": "Carlos",
+      "last": "Ramirez",
+      "phone": "+14155550110",
+      "birthdate": "1990-10-11",
+      "lastContacted": "2025-05-09",
+      "lastDismissed": "2025-04-05"
+    }
+  ]
+}
