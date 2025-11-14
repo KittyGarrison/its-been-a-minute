@@ -1,0 +1,9 @@
+{
+  "user": {
+    "id": 1,
+    "first": "Testly",
+    "last": "Tester",
+    "email": "ttester@example.com",
+    "password": "Password123!"
+  }
+}
