@@ -10,3 +10,8 @@
     --foreground: #ededed;
   }
 }
+
+button svg {
+  height: 25px;
+  width: 25px;
+}
