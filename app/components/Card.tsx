@@ -7,6 +7,10 @@ import { CalendarIcon } from "@/app/components/svgs/CalendarIcon";
 import { ContactIcon } from "@/app/components/svgs/ContactIcon";
 import { useState } from "react";
 import { Button } from "@heroui/react";
+import { formatDate } from "../lib/utils/date";
+import { ContactNotes } from "./ContactNotes";
+import { ContactTags } from "./ContactTags";
+import { ContactInfo } from "./ContactInfo";
 
 export function Card() {
   const {
@@ -28,22 +32,13 @@ export function Card() {
     );
   }
 
-  // Format date for display
-  const formatDate = (dateString?: string) => {
-    if (!dateString) return "—";
-    // Parse date string in UTC to avoid timezone issues
-    const [year, month, day] = dateString.split("-");
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
-  };
-
   // Calculate days since last contact
   const daysSinceContact = currentContact.lastContacted
     ? Math.floor(
-        (new Date().getTime() -
-          new Date(currentContact.lastContacted).getTime()) /
-          (1000 * 60 * 60 * 24)
-      )
+      (new Date().getTime() -
+        new Date(currentContact.lastContacted).getTime()) /
+      (1000 * 60 * 60 * 24)
+    )
     : null;
 
   // Handle contact/call functionality
@@ -131,64 +126,40 @@ export function Card() {
           <div className="grid grid-cols-2 gap-4 my-4 text-sm">
             {/* Phone */}
             {currentContact.phone && (
-              <div>
-                <p className="text-emerald-700 font-semibold">Phone</p>
-                <p className="text-emerald-900">{currentContact.phone}</p>
-              </div>
+              <ContactInfo
+                name="Phone"
+                value={currentContact.phone} />
             )}
 
             {/* Birthday */}
             {currentContact.birthday && (
-              <div>
-                <p className="text-emerald-700 font-semibold">Birthday</p>
-                <p className="text-emerald-900">{formatDate(currentContact.birthday)}</p>
-              </div>
+              <ContactInfo
+                name="Birthday"
+                value={formatDate(currentContact.birthday)} />
             )}
 
             {/* Last Contacted */}
             {daysSinceContact !== null && (
-              <div>
-                <p className="text-emerald-700 font-semibold">Last Contact</p>
-                <p className="text-emerald-900">
-                  {daysSinceContact === 0
-                    ? "Today"
-                    : `${daysSinceContact} days ago`}
-                </p>
-              </div>
+              <ContactInfo
+                name="Last Contact"
+                value={daysSinceContact === 0
+                  ? "Today"
+                  : `${daysSinceContact} days ago`} />
             )}
 
             {/* Follow-up Date */}
             {currentContact.followUpDate && (
-              <div>
-                <p className="text-emerald-700 font-semibold">Follow-up</p>
-                <p className="text-emerald-900">
-                  {formatDate(currentContact.followUpDate)}
-                </p>
-              </div>
+              <ContactInfo
+                name="Follow-up"
+                value={formatDate(currentContact.followUpDate)} />
             )}
           </div>
 
           {/* Notes */}
-          {currentContact.notes && (
-            <div className="my-4 p-3 bg-emerald-50 rounded border border-emerald-200">
-              <p className="text-xs text-emerald-700 font-semibold mb-1">NOTES</p>
-              <p className="text-sm text-emerald-900">{currentContact.notes}</p>
-            </div>
-          )}
+          {currentContact.notes && <ContactNotes notes={currentContact.notes} />}
 
           {/* Tags */}
-          {currentContact.tags && currentContact.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 my-4">
-              {currentContact.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+          {currentContact.tags && currentContact.tags.length > 0 && <ContactTags tags={currentContact.tags} />}
         </div>
 
         {/* Action Buttons */}
