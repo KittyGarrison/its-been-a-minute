@@ -1,0 +1,40 @@
+import { useEffect, useState, useRef } from "react";
+import { Card } from "./Card"
+import { Contact, useContacts } from "../context/ContactsContext";
+import { MAX_CARDS_PER_BATCH } from "@/config/constants";
+import { Button } from "@heroui/react";
+
+const CardStack = () => {
+  const [currentBatch, setCurrentBatch] = useState<Contact[]>([])
+  const { currentContact } = useContacts()
+
+  const prevIdRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!currentContact) return;
+
+    // prevent adding the same contact twice by tracking the last added contact in a ref
+    if (prevIdRef.current === currentContact.id) return;
+    prevIdRef.current = currentContact.id;
+
+    setCurrentBatch((prev) => [...prev, currentContact]);
+  }, [currentContact])
+
+  const isBatchCompleted = currentBatch.length > MAX_CARDS_PER_BATCH
+
+  const handleResetBatch = () => {
+    setCurrentBatch([])
+  }
+
+  return (
+    <>
+      {
+        isBatchCompleted ? <>
+          <Button onClick={handleResetBatch}> keep going </Button>
+        </> : <Card />
+      }
+    </>
+  )
+}
+
+export default CardStack;
