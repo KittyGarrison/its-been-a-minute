@@ -8,7 +8,7 @@ export default async function getPersons(){
     try {
         const fileContent = fs.readFileSync(filePath, 'utf8');
         const data = JSON.parse(fileContent);
-        console.log(data);
+        
         return NextResponse.json(data);
       } catch (error) {
         console.error('Error reading or parsing JSON file:', error);
