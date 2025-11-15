@@ -35,15 +35,6 @@ export function BackCard({ setToggleDisplayFront }: BackCardProps) {
     );
   }
 
-  // // Format date for display
-  // const formatDate = (dateString?: string) => {
-  //   if (!dateString) return "—";
-  //   // Parse date string in UTC to avoid timezone issues
-  //   const [year, month, day] = dateString.split("-");
-  //   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  //   return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
-  // };
-
   // Calculate days since last contact
   const daysSinceContact = currentContact.lastContacted
     ? Math.floor(
