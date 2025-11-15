@@ -12,10 +12,16 @@ import { ContactNotes } from "./ContactNotes";
 import { ContactTags } from "./ContactTags";
 import { ContactInfo } from "./ContactInfo";
 import { CTAButton } from "./CTAButton";
+import { ContactName } from "./ContactName";
 
-export function Card() {
+type CardProps = {
+  setToggleDisplayFront: (value: boolean) => void;
+};
+
+export function Card({ setToggleDisplayFront }: CardProps) {
   const {
-    currentContact
+    currentContact,
+    skipContact
   } = useContacts();
 
   if (!currentContact) {
@@ -26,6 +32,14 @@ export function Card() {
     );
   }
 
+  // Handle skip functionality
+  const handleSkip = () => {
+    skipContact();
+  };
+
+  const handleCTAClick = () => {
+    setToggleDisplayFront(false)
+  }
 
   return (
     <div className="w-full max-w-md mx-auto p-4">
@@ -49,9 +63,7 @@ export function Card() {
         {/* Contact Info Section */}
         <div className="p-6">
           {/* Name */}
-          <h2 className="text-2xl font-bold text-emerald-900 mb-1">
-            {currentContact.firstName} {currentContact.lastName}
-          </h2>
+          <ContactName firstName={currentContact.firstName} lastName={currentContact.lastName} />
 
           {/* Info Grid */}
           <div className="grid grid-cols-2 gap-4 my-4 text-sm">
@@ -62,8 +74,22 @@ export function Card() {
                 value={formatDate(currentContact.lastContacted)} />
             )}
           </div>
-          <div>
-            <CTAButton />
+        </div>
+
+        {/* Action Buttons */}
+        <div className="bg-emerald-50 border-t border-emerald-200 p-4">
+          <div className="grid grid-cols-2 gap-3">
+            {/* Give it a minute Button */}
+            <CTAButton handleClick={handleCTAClick}/>
+
+            {/* Skip Button */}
+            <Button
+              onClick={handleSkip}
+              className="bg-teal-500 text-white font-semibold hover:bg-teal-600 transition-colors"
+              fullWidth
+            >
+              Skip
+            </Button>
           </div>
         </div>
       </div>
