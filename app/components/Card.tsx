@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Button } from "@heroui/react";
 import { formatDate } from "../lib/utils/date";
 import { useCardActions } from "../hooks/useCardActions"
+import SparkleIcon from "./svgs/SparkleIcon";
 
 
 export function Card() {
@@ -272,19 +273,16 @@ const FrontBtns: React.FC<FrontBtnsProps> = ({
       <div className="grid grid-cols-2 gap-3">
         {/* Give it a minute Button */}
         <Button
-          className="bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
-          fullWidth
-          onClick={handleCTAClick}
+          color="danger"
+          endContent={<SparkleIcon />}
+          type="button"
+          onPress={() => { handleCTAClick() }}
         >
-          Give it a minute!
+          Give a minute
         </Button>
 
         {/* Skip Button */}
-        <Button
-          onClick={handleSkip}
-          className="bg-teal-500 text-white font-semibold hover:bg-teal-600 transition-colors"
-          fullWidth
-        >
+        <Button color="default" type="button" onPress={() => { handleSkip() }}>
           Skip
         </Button>
       </div>
