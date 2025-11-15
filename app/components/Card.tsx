@@ -32,6 +32,12 @@ export function Card() {
   // flip card state
   const [showFront, setShowFront] = useState(true)
 
+  const thwippAudio = new Audio("/audio/card_thwipp.wav");
+
+  const playAudio = () => {
+    thwippAudio.play();
+  }
+
   if (!currentContact) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -41,12 +47,14 @@ export function Card() {
   }
 
   const handleFlipCard = () => {
-    if (showSnoozeModal) return
+    if (showSnoozeModal || showFront) return
     setShowFront(true)
+    playAudio()
   }
 
   const handleClickCTA = () => {
     setShowFront(false)
+    playAudio()
   }
 
   return (
