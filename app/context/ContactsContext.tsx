@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
+import { persons } from "./persons";
 
 export interface Contact {
   id: string;
@@ -10,6 +11,7 @@ export interface Contact {
   email?: string;
   birthday?: string;
   lastContacted?: string;
+  lastDismissed?: string;
   followUpDate?: string;
   notes?: string;
   photo?: string;
@@ -29,39 +31,14 @@ interface ContactsContextType {
 }
 
 const ContactsContext = createContext<ContactsContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export function ContactsProvider({ children }: { children: React.ReactNode }) {
-  const [contacts, setContacts] = useState<Contact[]>([
-    {
-      id: "1",
-      firstName: "Sarah",
-      lastName: "Chen",
-      phone: "555-0101",
-      email: "sarah@example.com",
-      birthday: "1990-05-15",
-      lastContacted: "2024-10-01",
-      followUpDate: "2024-12-01",
-      notes: "Loves hiking and photography",
-      tags: ["friend", "birthday-soon"],
-    },
-    {
-      id: "2",
-      firstName: "James",
-      lastName: "Rodriguez",
-      phone: "555-0102",
-      email: "james@example.com",
-      birthday: "1988-11-22",
-      lastContacted: "2024-08-15",
-      followUpDate: "2024-12-15",
-      notes: "College roommate, lives in Austin",
-      tags: ["friend", "college"],
-    },
-  ]);
+  const [contacts, setContacts] = useState<Contact[]>(persons);
 
   const [currentContact, setCurrentContact] = useState<Contact | null>(
-    contacts[0] || null
+    contacts[0] || null,
   );
 
   const addContact = (contact: Contact) => {
@@ -74,7 +51,7 @@ export function ContactsProvider({ children }: { children: React.ReactNode }) {
 
   const updateContact = (id: string, updates: Partial<Contact>) => {
     setContacts((prev) =>
-      prev.map((c) => (c.id === id ? { ...c, ...updates } : c))
+      prev.map((c) => (c.id === id ? { ...c, ...updates } : c)),
     );
     if (currentContact?.id === id) {
       setCurrentContact({ ...currentContact, ...updates });
