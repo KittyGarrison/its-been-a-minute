@@ -5,6 +5,7 @@ import { Contact, useContacts } from "../context/ContactsContext";
 import { MAX_CARDS_PER_BATCH } from "@/config/constants";
 import { Button } from "@heroui/react";
 import ContactCard from "./ContactCard";
+import { RestPage } from "./RestPage";
 
 const CardStack = () => {
   const { currentContact } = useContacts();
@@ -41,7 +42,7 @@ const CardStack = () => {
         // @TODO: no more contacts to show page when run out of contacts to display
         isBatchCompleted ? (
           <>
-            <Button onClick={handleResetBatch}> keep going </Button>
+            <RestPage handleResetBatch={handleResetBatch} />
           </>
         ) : (
           <ContactCard />
