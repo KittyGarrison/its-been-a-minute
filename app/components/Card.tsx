@@ -8,10 +8,8 @@ import { ContactIcon } from "@/app/components/svgs/ContactIcon";
 import { useState } from "react";
 import { Button } from "@heroui/react";
 import { formatDate } from "../lib/utils/date";
-import { ContactInfo } from "./ContactInfo";
-import { CTAButton } from "./CTAButton";
-import { ContactName } from "./ContactName";
 import { useCardActions } from "../hooks/useCardActions"
+import SparkleIcon from "./svgs/SparkleIcon";
 
 
 export function Card() {
@@ -31,6 +29,7 @@ export function Card() {
     handleSnooze
   } = useCardActions()
 
+  // flip card state
   const [showFront, setShowFront] = useState(true)
 
   if (!currentContact) {
@@ -41,18 +40,17 @@ export function Card() {
     );
   }
 
-  const handleCardClick = () => {
-    if(showSnoozeModal) return
+  const handleFlipCard = () => {
+    if (showSnoozeModal) return
     setShowFront(true)
   }
 
-  const handleCTAClick = () => {
+  const handleClickCTA = () => {
     setShowFront(false)
   }
 
-  return showFront ? (
-    // FRONT CARD
-    <div className="w-full max-w-md mx-auto p-4" onClick={handleCardClick}>
+  return (
+    <div className="w-full max-w-md mx-auto p-4" onClick={handleFlipCard}>
       {/* Card Container */}
       <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-emerald-200">
         {/* Header with photo */}
@@ -73,152 +71,90 @@ export function Card() {
         {/* Contact Info Section */}
         <div className="p-6">
           {/* Name */}
-          <ContactName firstName={currentContact.firstName} lastName={currentContact.lastName} />
-
-          {/* Info Grid */}
-          <div className="grid grid-cols-2 gap-4 my-4 text-sm">
-            {/* Last Contacted Date */}
-            {currentContact.lastContacted && (
-              <ContactInfo name="Last Contacted Date" value={formatDate(currentContact.lastContacted)} />
-            )}
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="bg-emerald-50 border-t border-emerald-200 p-4">
-          <div className="grid grid-cols-2 gap-3">
-            {/* Give it a minute Button */}
-            <CTAButton handleClick={handleCTAClick} />
-
-            {/* Skip Button */}
-            <Button
-              onClick={handleSkip}
-              className="bg-teal-500 text-white font-semibold hover:bg-teal-600 transition-colors"
-              fullWidth
-            >
-              Skip
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  ) : (
-    // BACK CARD
-    <div className="w-full max-w-md mx-auto p-4" onClick={handleCardClick}>
-      {/* Card Container */}
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-emerald-200">
-        {/* Header with photo */}
-        <div className="relative h-48 bg-gradient-to-b from-emerald-500 to-emerald-300 flex items-center justify-center">
-          {currentContact.photo ? (
-            <img
-              src={currentContact.photo}
-              alt={`${currentContact.firstName} ${currentContact.lastName}`}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="text-white opacity-50">
-              <ContactIcon />
-            </div>
-          )}
-        </div>
-
-        {/* Contact Info Section */}
-        <div className="p-6">
-          {/* Name */}
-          <ContactName firstName={currentContact.firstName} lastName={currentContact.lastName} />
+          <h2 className="text-2xl font-bold text-emerald-900 mb-1">
+            {currentContact.firstName} {currentContact.lastName}
+          </h2>
 
           {/* Info Grid */}
           <div className="grid grid-cols-2 gap-4 my-4 text-sm">
             {/* Phone */}
             {currentContact.phone && (
-              <ContactInfo name="Phone" value={currentContact.phone} />
+              <div>
+                <p className="text-emerald-700 font-semibold">Phone</p>
+                <p className="text-emerald-900">{currentContact.phone}</p>
+              </div>
             )}
 
             {/* Birthday */}
             {currentContact.birthday && (
-              <ContactInfo name="Birthday" value={formatDate(currentContact.birthday)} />
+              <div>
+                <p className="text-emerald-700 font-semibold">Birthday</p>
+                <p className="text-emerald-900">{formatDate(currentContact.birthday)}</p>
+              </div>
             )}
 
             {/* Last Contacted */}
             {daysSinceContact !== null && (
-              <ContactInfo name="Last Contact" value={daysSinceContact === 0
-                ? "Today"
-                : `${daysSinceContact} days ago`} />
+              <div>
+                <p className="text-emerald-700 font-semibold">Last Contact</p>
+                <p className="text-emerald-900">
+                  {daysSinceContact === 0
+                    ? "Today"
+                    : `${daysSinceContact} days ago`}
+                </p>
+              </div>
             )}
 
             {/* Follow-up Date */}
             {currentContact.followUpDate && (
-              <ContactInfo name="Follow-up" value={formatDate(currentContact.followUpDate)} />
+              <div>
+                <p className="text-emerald-700 font-semibold">Follow-up</p>
+                <p className="text-emerald-900">
+                  {formatDate(currentContact.followUpDate)}
+                </p>
+              </div>
             )}
           </div>
 
-          {/* Notes */}
-          {currentContact.notes && (
-            <div className="my-4 p-3 bg-emerald-50 rounded border border-emerald-200">
-              <p className="text-xs text-emerald-700 font-semibold mb-1">NOTES</p>
-              <p className="text-sm text-emerald-900">{currentContact.notes}</p>
-            </div>
-          )}
+          {
+            !showFront ? <>
+              {/* Notes */}
+              {currentContact.notes && (
+                <div className="my-4 p-3 bg-emerald-50 rounded border border-emerald-200">
+                  <p className="text-xs text-emerald-700 font-semibold mb-1">NOTES</p>
+                  <p className="text-sm text-emerald-900">{currentContact.notes}</p>
+                </div>
+              )}
 
-          {/* Tags */}
-          {currentContact.tags && currentContact.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 my-4">
-              {currentContact.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+              {/* Tags */}
+              {currentContact.tags && currentContact.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 my-4">
+                  {currentContact.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </> : null
+          }
         </div>
 
-        {/* Action Buttons */}
-        <div className="bg-emerald-50 border-t border-emerald-200 p-4">
-          <div className="grid grid-cols-2 gap-3 mb-3">
-            {/* Contact Button */}
-            <Button
-              onClick={handleContact}
-              className="bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
-              fullWidth
-            >
-              Contact
-            </Button>
-
-            {/* SMS Button */}
-            {currentContact.phone && (
-              <Button
-                onClick={handleSMS}
-                className="bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition-colors"
-                fullWidth
-              >
-                SMS
-              </Button>
-            )}
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            {/* Snooze Button */}
-            <Button
-              onClick={() => setShowSnoozeModal(true)}
-              className="bg-emerald-400 text-white font-semibold hover:bg-emerald-500 transition-colors"
-              fullWidth
-            >
-              Snooze
-            </Button>
-
-            {/* Skip Button */}
-            <Button
-              onClick={handleSkip}
-              className="bg-teal-500 text-white font-semibold hover:bg-teal-600 transition-colors"
-              fullWidth
-            >
-              Skip
-            </Button>
-          </div>
-        </div>
+        {
+          showFront ? <FrontBtns
+            handleCTAClick={handleClickCTA}
+            handleSkip={handleSkip} /> :
+            <BackBtns
+              phone={currentContact.phone}
+              handleContact={handleContact}
+              handleSMS={handleSMS}
+              setShowSnoozeModal={setShowSnoozeModal}
+              handleSkip={handleSkip}
+            />
+        }
       </div>
 
       {/* Snooze Modal */}
@@ -258,3 +194,99 @@ export function Card() {
     </div>
   )
 }
+
+type BackBtnsProps = {
+  handleContact: () => void;
+  phone?: string | null;
+  handleSMS: () => void;
+  setShowSnoozeModal: (value: boolean) => void;
+  handleSkip: () => void;
+};
+
+const BackBtns: React.FC<BackBtnsProps> = ({
+  handleContact,
+  phone,
+  handleSMS,
+  setShowSnoozeModal,
+  handleSkip,
+}) => {
+  return (<>
+    {/* Action Buttons */}
+    <div className="bg-emerald-50 border-t border-emerald-200 p-4">
+      <div className="grid grid-cols-2 gap-3 mb-3">
+        {/* Contact Button */}
+        <Button
+          onClick={handleContact}
+          className="bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
+          fullWidth
+        >
+          Contact
+        </Button>
+
+        {/* SMS Button */}
+        {phone && (
+          <Button
+            onClick={handleSMS}
+            className="bg-emerald-500 text-white font-semibold hover:bg-emerald-600 transition-colors"
+            fullWidth
+          >
+            SMS
+          </Button>
+        )}
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        {/* Snooze Button */}
+        <Button
+          onClick={() => setShowSnoozeModal(true)}
+          className="bg-emerald-400 text-white font-semibold hover:bg-emerald-500 transition-colors"
+          fullWidth
+        >
+          Snooze
+        </Button>
+
+        {/* Skip Button */}
+        <Button
+          onClick={handleSkip}
+          className="bg-teal-500 text-white font-semibold hover:bg-teal-600 transition-colors"
+          fullWidth
+        >
+          Skip
+        </Button>
+      </div>
+    </div>
+  </>)
+}
+
+type FrontBtnsProps = {
+  handleCTAClick: () => void;
+  handleSkip: () => void;
+};
+
+const FrontBtns: React.FC<FrontBtnsProps> = ({
+  handleCTAClick,
+  handleSkip,
+}) => {
+  return (<>
+    {/* Action Buttons */}
+    <div className="bg-emerald-50 border-t border-emerald-200 p-4">
+      <div className="grid grid-cols-2 gap-3">
+        {/* Give it a minute Button */}
+        <Button
+          color="danger"
+          endContent={<SparkleIcon />}
+          type="button"
+          onPress={() => { handleCTAClick() }}
+        >
+          Give a minute
+        </Button>
+
+        {/* Skip Button */}
+        <Button color="default" type="button" onPress={() => { handleSkip() }}>
+          Skip
+        </Button>
+      </div>
+    </div>
+  </>)
+}
+
