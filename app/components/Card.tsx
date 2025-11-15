@@ -5,7 +5,7 @@
 import { useContacts } from "@/app/context/ContactsContext";
 import { CalendarIcon } from "@/app/components/svgs/CalendarIcon";
 import { ContactIcon } from "@/app/components/svgs/ContactIcon";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Button } from "@heroui/react";
 import { formatDate } from "../lib/utils/date";
 import { useCardActions } from "../hooks/useCardActions"
@@ -32,10 +32,14 @@ export function Card() {
   // flip card state
   const [showFront, setShowFront] = useState(true)
 
-  const thwippAudio = new Audio("/audio/card_thwipp.wav");
+  const thwippAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    thwippAudioRef.current = new Audio("/audio/card_thwipp.wav");
+  }, []);
 
   const playAudio = () => {
-    thwippAudio.play();
+    thwippAudioRef.current?.play();
   }
 
   if (!currentContact) {

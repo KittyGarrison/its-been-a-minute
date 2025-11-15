@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState, useRef } from "react";
 import { Contact, useContacts } from "../context/ContactsContext";
 import { MAX_CARDS_PER_BATCH } from "@/config/constants";
@@ -5,16 +7,15 @@ import { Button } from "@heroui/react";
 import { Card } from "./Card";
 
 const CardStack = () => {
-  const shuffleAudio = new Audio("/audio/cards_shuffle.mp3");
-
-  useEffect(() => {
-    shuffleAudio.play();
-  }, []);
-
-  const [currentBatch, setCurrentBatch] = useState<Contact[]>([])
-  const { currentContact } = useContacts()
-
+  const { currentContact } = useContacts();
+  const [currentBatch, setCurrentBatch] = useState<Contact[]>([]);
   const prevIdRef = useRef<string | null>(null);
+
+  const shuffleAudioRef = useRef<HTMLAudioElement | null>(null);
+  useEffect(() => {
+    shuffleAudioRef.current = new Audio("/audio/cards_shuffle.mp3");
+    shuffleAudioRef.current.play();
+  }, []);
 
   useEffect(() => {
     if (!currentContact) return;
