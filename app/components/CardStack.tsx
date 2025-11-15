@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Contact, useContacts } from "../context/ContactsContext";
 import { MAX_CARDS_PER_BATCH } from "@/config/constants";
 import { Button } from "@heroui/react";
-import { CardWrapper } from "./CardWrapper";
+import { Card } from "./Card";
 
 const CardStack = () => {
   const [currentBatch, setCurrentBatch] = useState<Contact[]>([])
@@ -34,7 +34,7 @@ const CardStack = () => {
         // @TODO: no more contacts to show page when run out of contacts to display
         isBatchCompleted ? <>
           <Button onClick={handleResetBatch}> keep going </Button>
-        </> : <CardWrapper />
+        </> : <Card />
       }
     </>
   )
