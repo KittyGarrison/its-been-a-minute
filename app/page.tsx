@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Contacts from "./components/Contacts";
 import CardStack from "./components/CardStack";
-import Login from './components/Login';
+import Login from "./components/Login";
 
 export default function Home() {
   const [page, setPage] = useState<string>();
@@ -20,7 +20,7 @@ export default function Home() {
       case "contacts":
         return <Contacts />;
       default:
-        return <Login loginClick={() => setPage('home')} />;
+        return <Login loginClick={() => setPage("home")} />;
     }
   };
 
@@ -30,7 +30,7 @@ export default function Home() {
         homeClick={() => setPage("home")}
         contactsClick={() => setPage("contacts")}
       />
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         {renderPage()}
       </div>
     </div>
