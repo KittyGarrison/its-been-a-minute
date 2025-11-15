@@ -21,7 +21,6 @@ export default function Home() {
       <Nav
         homeClick={() => setPage("home")}
         contactsClick={() => setPage("contacts")}
-        settingsClick={() => setPage("settings")}
       />
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 flex items-center justify-center">
         {renderPage()}
