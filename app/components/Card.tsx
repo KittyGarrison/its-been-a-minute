@@ -9,8 +9,6 @@ import { useState } from "react";
 import { Button } from "@heroui/react";
 import { formatDate } from "../lib/utils/date";
 import { ContactInfo } from "./ContactInfo";
-import { CTAButton } from "./CTAButton";
-import { ContactName } from "./ContactName";
 import { useCardActions } from "../hooks/useCardActions"
 
 
@@ -42,7 +40,7 @@ export function Card() {
   }
 
   const handleCardClick = () => {
-    if(showSnoozeModal) return
+    if (showSnoozeModal) return
     setShowFront(true)
   }
 
@@ -73,7 +71,9 @@ export function Card() {
         {/* Contact Info Section */}
         <div className="p-6">
           {/* Name */}
-          <ContactName firstName={currentContact.firstName} lastName={currentContact.lastName} />
+          <h2 className="text-2xl font-bold text-emerald-900 mb-1">
+            {currentContact.firstName} {currentContact.lastName}
+          </h2>
 
           {/* Info Grid */}
           <div className="grid grid-cols-2 gap-4 my-4 text-sm">
@@ -88,7 +88,13 @@ export function Card() {
         <div className="bg-emerald-50 border-t border-emerald-200 p-4">
           <div className="grid grid-cols-2 gap-3">
             {/* Give it a minute Button */}
-            <CTAButton handleClick={handleCTAClick} />
+            <Button
+              className="bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors"
+              fullWidth
+              onClick={handleCTAClick}
+            >
+              Give it a minute!
+            </Button>
 
             {/* Skip Button */}
             <Button
@@ -125,7 +131,9 @@ export function Card() {
         {/* Contact Info Section */}
         <div className="p-6">
           {/* Name */}
-          <ContactName firstName={currentContact.firstName} lastName={currentContact.lastName} />
+          <h2 className="text-2xl font-bold text-emerald-900 mb-1">
+            {currentContact.firstName} {currentContact.lastName}
+          </h2>
 
           {/* Info Grid */}
           <div className="grid grid-cols-2 gap-4 my-4 text-sm">
