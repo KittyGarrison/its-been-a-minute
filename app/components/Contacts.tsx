@@ -5,7 +5,7 @@ const Contacts = () => {
   const { contacts } = useContacts();
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 bg-background p-3 rounded-md">
       <h2>Your Contacts</h2>
       {contacts.map((contact) => (
         <User
