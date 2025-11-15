@@ -19,14 +19,17 @@ const Login = ({ loginClick }: LoginProps) => {
         labelPlacement="outside"
         name="email"
         placeholder="Enter your email"
+        type="email"
+        isRequired
       />
       <Input
         label="Password"
         labelPlacement="outside"
         placeholder="••••••••"
         type="password"
+        isRequired
       />
-      <Button type="submit" aria-label="Login" color="primary" fullWidth>
+      <Button type="submit" aria-label="Login" color="danger" fullWidth>
         Submit
       </Button>
     </Form>
@@ -34,7 +37,3 @@ const Login = ({ loginClick }: LoginProps) => {
 };
 
 export default Login;
-
-
-
-
