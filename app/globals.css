@@ -6,9 +6,18 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --primary: #b73a3a;
+    --secondary: #2f5131;
+
+    --background: var(--secondary);
   }
+}
+
+@theme static {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --text-secondary-*: initial;
+  --color-secondary-600: var(--secondary);
 }
 
 button svg {

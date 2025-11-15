@@ -30,7 +30,7 @@ export default function Home() {
         homeClick={() => setPage("home")}
         contactsClick={() => setPage("contacts")}
       />
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-secondary">
         {renderPage()}
       </div>
     </div>

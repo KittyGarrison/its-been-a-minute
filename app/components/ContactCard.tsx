@@ -107,7 +107,7 @@ const ContactCard = () => {
         {!flipCard ? (
           <div className="flex flex-col gap-2 w-full">
             <Button
-              color="danger"
+              color="primary"
               endContent={<SparkleIcon />}
               type="button"
               onPress={handleFlipCard}
@@ -127,7 +127,7 @@ const ContactCard = () => {
         ) : (
           <div className="flex flex-col gap-2">
             <Button
-              color="success"
+              color="secondary"
               startContent={<CopyIcon />}
               type="button"
               onPress={handleContact}
@@ -146,7 +146,7 @@ const ContactCard = () => {
               Open SMS
             </Button>
             <Button
-              color="danger"
+              color="primary"
               startContent={<PhoneIcon />}
               type="button"
               onPress={handleSMS}
@@ -168,7 +168,7 @@ const ContactCard = () => {
                 Cancel
               </Button>
               <Button
-                color="success"
+                color="secondary"
                 startContent={<CheckmarkIcon />}
                 type="button"
                 variant="flat"
