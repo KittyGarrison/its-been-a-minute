@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Nav from "./components/Nav";
 import Contacts from "./components/Contacts";
-import { CardWrapper } from "./components/CardWrapper";
+import { Card } from "./components/Card";
 
 export default function Home() {
   const [page, setPage] = useState<string>();
@@ -13,7 +13,7 @@ export default function Home() {
       case "contacts":
         return <Contacts />;
       default:
-        return <CardWrapper />;
+        return <Card />;
     }
   };
 
