@@ -42,6 +42,7 @@ export function Card() {
   }
 
   const handleCardClick = () => {
+    if(showSnoozeModal) return
     setShowFront(true)
   }
 
