@@ -1,0 +1,1 @@
+export const MAX_CARDS_PER_BATCH = 5;

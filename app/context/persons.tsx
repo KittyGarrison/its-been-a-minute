@@ -19,6 +19,7 @@ export const persons = [
   },
   {
     id: "103",
+    email: "emartinez@gmail.com",
     firstName: "Elena",
     lastName: "Martinez",
     phone: "+14155550103",
@@ -55,6 +56,7 @@ export const persons = [
   },
   {
     id: "107",
+    email: "thebestNia@thompson.com",
     firstName: "Nia",
     lastName: "Thompson",
     phone: "+14155550107",
