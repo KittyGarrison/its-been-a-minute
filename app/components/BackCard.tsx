@@ -35,15 +35,6 @@ export function BackCard({ setToggleDisplayFront }: BackCardProps) {
     );
   }
 
-  // // Format date for display
-  // const formatDate = (dateString?: string) => {
-  //   if (!dateString) return "—";
-  //   // Parse date string in UTC to avoid timezone issues
-  //   const [year, month, day] = dateString.split("-");
-  //   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  //   return `${months[parseInt(month) - 1]} ${parseInt(day)}, ${year}`;
-  // };
-
   // Calculate days since last contact
   const daysSinceContact = currentContact.lastContacted
     ? Math.floor(
@@ -81,6 +72,7 @@ export function BackCard({ setToggleDisplayFront }: BackCardProps) {
       }
     }
     nextContact();
+    setToggleDisplayFront(true);
   };
 
   // Handle SMS functionality
@@ -91,12 +83,14 @@ export function BackCard({ setToggleDisplayFront }: BackCardProps) {
         lastContacted: new Date().toISOString().split("T")[0],
       });
       nextContact();
+      setToggleDisplayFront(true);
     }
   };
 
   // Handle skip functionality
   const handleSkip = () => {
     skipContact();
+    setToggleDisplayFront(true);
   };
 
   // Handle snooze functionality
@@ -106,6 +100,7 @@ export function BackCard({ setToggleDisplayFront }: BackCardProps) {
       setShowSnoozeModal(false);
       setSnoozeDate("");
     }
+    setToggleDisplayFront(true);
   };
 
   const handleCardClick = () => {
