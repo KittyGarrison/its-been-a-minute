@@ -11,7 +11,11 @@ import { formatDate } from "../lib/utils/date";
 import { ContactName } from "./ContactName";
 import { ContactInfo } from "./ContactInfo";
 
-export function BackCard({ setToggleDisplayFront }) {
+type BackCardProps = {
+  setToggleDisplayFront: (value: boolean) => void;
+};
+
+export function BackCard({ setToggleDisplayFront }: BackCardProps) {
   const {
     currentContact,
     updateContact,
