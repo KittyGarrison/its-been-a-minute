@@ -1,8 +1,17 @@
 @import "tailwindcss";
+@plugin './hero.ts';
+
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+button svg {
+  height: 25px;
+  width: 25px;
 }
