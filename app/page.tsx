@@ -3,12 +3,15 @@
 import { useState } from "react";
 import Nav from "./components/Nav";
 import Contacts from "./components/Contacts";
+import CardStack from "./components/CardStack";
 
 export default function Home() {
   const [page, setPage] = useState<string>();
 
   const renderPage = () => {
     switch (page) {
+      case "home":
+        return <CardStack />;
       case "contacts":
         return <Contacts />;
       default:
