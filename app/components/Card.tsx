@@ -8,7 +8,6 @@ import { ContactIcon } from "@/app/components/svgs/ContactIcon";
 import { useState } from "react";
 import { Button } from "@heroui/react";
 import { formatDate } from "../lib/utils/date";
-import { ContactInfo } from "./ContactInfo";
 import { useCardActions } from "../hooks/useCardActions"
 
 
@@ -77,9 +76,42 @@ export function Card() {
 
           {/* Info Grid */}
           <div className="grid grid-cols-2 gap-4 my-4 text-sm">
-            {/* Last Contacted Date */}
-            {currentContact.lastContacted && (
-              <ContactInfo name="Last Contacted Date" value={formatDate(currentContact.lastContacted)} />
+            {/* Phone */}
+            {currentContact.phone && (
+              <div>
+                <p className="text-emerald-700 font-semibold">Phone</p>
+                <p className="text-emerald-900">{currentContact.phone}</p>
+              </div>
+            )}
+
+            {/* Birthday */}
+            {currentContact.birthday && (
+              <div>
+                <p className="text-emerald-700 font-semibold">Birthday</p>
+                <p className="text-emerald-900">{formatDate(currentContact.birthday)}</p>
+              </div>
+            )}
+
+            {/* Last Contacted */}
+            {daysSinceContact !== null && (
+              <div>
+                <p className="text-emerald-700 font-semibold">Last Contact</p>
+                <p className="text-emerald-900">
+                  {daysSinceContact === 0
+                    ? "Today"
+                    : `${daysSinceContact} days ago`}
+                </p>
+              </div>
+            )}
+
+            {/* Follow-up Date */}
+            {currentContact.followUpDate && (
+              <div>
+                <p className="text-emerald-700 font-semibold">Follow-up</p>
+                <p className="text-emerald-900">
+                  {formatDate(currentContact.followUpDate)}
+                </p>
+              </div>
             )}
           </div>
         </div>
@@ -139,24 +171,40 @@ export function Card() {
           <div className="grid grid-cols-2 gap-4 my-4 text-sm">
             {/* Phone */}
             {currentContact.phone && (
-              <ContactInfo name="Phone" value={currentContact.phone} />
+              <div>
+                <p className="text-emerald-700 font-semibold">Phone</p>
+                <p className="text-emerald-900">{currentContact.phone}</p>
+              </div>
             )}
 
             {/* Birthday */}
             {currentContact.birthday && (
-              <ContactInfo name="Birthday" value={formatDate(currentContact.birthday)} />
+              <div>
+                <p className="text-emerald-700 font-semibold">Birthday</p>
+                <p className="text-emerald-900">{formatDate(currentContact.birthday)}</p>
+              </div>
             )}
 
             {/* Last Contacted */}
             {daysSinceContact !== null && (
-              <ContactInfo name="Last Contact" value={daysSinceContact === 0
-                ? "Today"
-                : `${daysSinceContact} days ago`} />
+              <div>
+                <p className="text-emerald-700 font-semibold">Last Contact</p>
+                <p className="text-emerald-900">
+                  {daysSinceContact === 0
+                    ? "Today"
+                    : `${daysSinceContact} days ago`}
+                </p>
+              </div>
             )}
 
             {/* Follow-up Date */}
             {currentContact.followUpDate && (
-              <ContactInfo name="Follow-up" value={formatDate(currentContact.followUpDate)} />
+              <div>
+                <p className="text-emerald-700 font-semibold">Follow-up</p>
+                <p className="text-emerald-900">
+                  {formatDate(currentContact.followUpDate)}
+                </p>
+              </div>
             )}
           </div>
 
