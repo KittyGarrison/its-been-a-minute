@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Contacts from "./components/Contacts";
 import CardStack from "./components/CardStack";
 
 export default function Home() {
   const [page, setPage] = useState<string>();
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [page]);
 
   const renderPage = () => {
     switch (page) {
