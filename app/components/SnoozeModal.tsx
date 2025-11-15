@@ -1,6 +1,15 @@
 import { Button } from "@heroui/react";
+import { ChangeEvent } from "react";
 
-export const SnoozeModal = ({ snoozeDate, handleSnoozeDate, handleSnooze, setShowSnoozeModal, setSnoozeDate }) => (
+interface SnoozeModalProps {
+  snoozeDate: string;
+  handleSnoozeDate: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSnooze: () => void;
+  setShowSnoozeModal: (show: boolean) => void;
+  setSnoozeDate: (date: string) => void;
+}
+
+export const SnoozeModal = ({ snoozeDate, handleSnoozeDate, handleSnooze, setShowSnoozeModal, setSnoozeDate }: SnoozeModalProps) => (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
     <div className="bg-white rounded-lg p-6 max-w-sm w-full border border-emerald-300">
       <h3 className="text-lg font-bold text-emerald-900 mb-4">
