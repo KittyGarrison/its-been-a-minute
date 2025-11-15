@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { Contact, useContacts } from "../context/ContactsContext";
 import { MAX_CARDS_PER_BATCH } from "@/config/constants";
 import { Button } from "@heroui/react";
-import { Card } from "./Card";
+import ContactCard from "./ContactCard";
 
 const CardStack = () => {
   const { currentContact } = useContacts();
@@ -26,25 +26,29 @@ const CardStack = () => {
     // prevIdRef.current = currentContact.id;
 
     setCurrentBatch((prev) => [...prev, currentContact]);
-  }, [currentContact])
+  }, [currentContact]);
 
-  const isBatchCompleted = currentBatch.length > MAX_CARDS_PER_BATCH
+  const isBatchCompleted = currentBatch.length > MAX_CARDS_PER_BATCH;
 
   const handleResetBatch = () => {
-    setCurrentBatch([])
-  }
+    setCurrentBatch([]);
+  };
 
   return (
     <>
       {
         // @TODO: show rest page if isBatchCompleted
         // @TODO: no more contacts to show page when run out of contacts to display
-        isBatchCompleted ? <>
-          <Button onClick={handleResetBatch}> keep going </Button>
-        </> : <Card />
+        isBatchCompleted ? (
+          <>
+            <Button onClick={handleResetBatch}> keep going </Button>
+          </>
+        ) : (
+          <ContactCard />
+        )
       }
     </>
-  )
-}
+  );
+};
 
 export default CardStack;
