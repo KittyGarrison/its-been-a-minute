@@ -2,21 +2,29 @@
 
 import { useState } from "react";
 import Nav from "./components/Nav";
+import Contacts from "./components/Contacts";
 
 export default function Home() {
-  const [showHome, setShowHome] = useState<boolean>(false);
-  const [showContacts, setShowContacts] = useState<boolean>(false);
-  const [showSettings, setShowsettings] = useState<boolean>(false);
+  const [page, setPage] = useState<string>();
+
+  const renderPage = () => {
+    switch (page) {
+      case "contacts":
+        return <Contacts />;
+      default:
+        return <div>Hello World!</div>;
+    }
+  };
 
   return (
     <div>
       <Nav
-        homeClick={() => setShowHome(!showHome)}
-        contactsClick={() => setShowContacts(!showContacts)}
-        settingsClick={() => setShowsettings(!showSettings)}
+        homeClick={() => setPage("home")}
+        contactsClick={() => setPage("contacts")}
+        settingsClick={() => setPage("settings")}
       />
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 flex items-center justify-center">
-        Hello World!
+        {renderPage()}
       </div>
     </div>
   );
