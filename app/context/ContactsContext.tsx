@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { persons } from "./persons";
+import { persons } from "./persons"; //TODO Use proper API implementation, this is for demo.
 
 export interface Contact {
   id: string;
