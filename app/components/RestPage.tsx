@@ -1,12 +1,13 @@
-import { Button, Card, CardFooter, CardHeader, Divider } from "@heroui/react"
-import TrophyIcon from "./svgs/TrophyIcon"
+import { FC } from "react";
+import { Button, Card, CardFooter, CardHeader, Divider } from "@heroui/react";
+import TrophyIcon from "./svgs/TrophyIcon";
 import SparkleIcon from "./svgs/SparkleIcon";
 
 interface RestPageProps {
   handleResetBatch: () => void;
 }
 
-export const RestPage = ({ handleResetBatch }) => {
+export const RestPage: FC<RestPageProps> = ({ handleResetBatch }) => {
   return (
     <Card>
       <CardHeader>
@@ -40,4 +41,4 @@ export const RestPage = ({ handleResetBatch }) => {
       </CardFooter>
     </Card>
   );
-}
+};
