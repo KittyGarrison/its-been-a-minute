@@ -172,7 +172,10 @@ const ContactCard = () => {
                 startContent={<CheckmarkIcon />}
                 type="button"
                 variant="flat"
-                onPress={handleSkip}
+                onPress={() => {
+                  setFlipCard(false);
+                  handleSkip();
+                }}
                 fullWidth
               >
                 Done
