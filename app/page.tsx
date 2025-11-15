@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Contacts from "./components/Contacts";
 import CardStack from "./components/CardStack";
+import Login from './components/Login';
 
 export default function Home() {
   const [page, setPage] = useState<string>();
@@ -19,7 +20,7 @@ export default function Home() {
       case "contacts":
         return <Contacts />;
       default:
-        return <CardStack />;
+        return <Login loginClick={() => setPage('home')} />;
     }
   };
 
