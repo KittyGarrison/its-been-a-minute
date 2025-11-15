@@ -1,19 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Contacts from "./components/Contacts";
-import { Card } from "./components/Card";
+import CardStack from "./components/CardStack";
 
 export default function Home() {
   const [page, setPage] = useState<string>();
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [page]);
+
   const renderPage = () => {
     switch (page) {
+      case "home":
+        return <CardStack />;
       case "contacts":
         return <Contacts />;
       default:
-        return <Card />;
+        return <CardStack />;
     }
   };
 
