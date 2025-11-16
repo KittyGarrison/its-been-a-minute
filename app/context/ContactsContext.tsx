@@ -28,7 +28,7 @@ interface ContactsContextType {
   nextContact: () => void;
   skipContact: () => void;
   snoozeContact: (date: string) => void;
-  lastContact?: boolean 
+  lastContact?: boolean
 }
 
 const ContactsContext = createContext<ContactsContextType | undefined>(
@@ -65,8 +65,6 @@ export function ContactsProvider({ children }: { children: React.ReactNode }) {
     const currentIndex = contacts.findIndex((c) => c.id === currentContact.id);
     if (currentIndex < contacts.length - 1) {
       setCurrentContact(contacts[currentIndex + 1]);
-    } else {
-      setLastContact(true)
     }
   };
 
@@ -89,8 +87,7 @@ export function ContactsProvider({ children }: { children: React.ReactNode }) {
     setCurrentContact,
     nextContact,
     skipContact,
-    snoozeContact,
-    lastContact
+    snoozeContact
   };
 
   return (

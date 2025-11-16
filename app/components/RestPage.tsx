@@ -2,12 +2,11 @@ import { FC } from "react";
 import { Button, Card, CardFooter, CardHeader, Divider } from "@heroui/react";
 import TrophyIcon from "./svgs/TrophyIcon";
 import SparkleIcon from "./svgs/SparkleIcon";
+import { useContacts } from "../context/ContactsContext";
 
-interface RestPageProps {
-  handleResetBatch: () => void;
-}
+export const RestPage = () => {
+  const { nextContact } = useContacts();
 
-export const RestPage: FC<RestPageProps> = ({ handleResetBatch }) => {
   return (
     <Card>
       <CardHeader>
@@ -32,7 +31,7 @@ export const RestPage: FC<RestPageProps> = ({ handleResetBatch }) => {
             color="default"
             endContent={<SparkleIcon />}
             type="button"
-            onPress={handleResetBatch}
+            onPress={nextContact}
             fullWidth
           >
             Keep going
