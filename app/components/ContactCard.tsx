@@ -23,8 +23,13 @@ import CopyIcon from "./svgs/CopyIcon";
 import PhoneIcon from "./svgs/PhoneIcon";
 
 const ContactCard = () => {
-  const { currentContact } = useContacts();
+  const { currentContact, contacts } = useContacts();
 
+  const indexContact = currentContact
+    ? contacts.indexOf(currentContact)
+    : -1;
+
+  const isLastContact = indexContact !== contacts.length - 1
   const { daysSinceContact, handleContact, handleSMS, handleSkip } =
     useCardActions();
 
@@ -115,14 +120,16 @@ const ContactCard = () => {
             >
               Give a minute
             </Button>
-            <Button
-              color="default"
-              type="button"
-              onPress={handleSkip}
-              fullWidth
-            >
-              Skip
-            </Button>
+            {
+              isLastContact && <Button
+                color="default"
+                type="button"
+                onPress={handleSkip}
+                fullWidth
+              >
+                Skip
+              </Button>
+            }
           </div>
         ) : (
           <div className="flex flex-col gap-2">

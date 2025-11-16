@@ -28,6 +28,7 @@ interface ContactsContextType {
   nextContact: () => void;
   skipContact: () => void;
   snoozeContact: (date: string) => void;
+  lastContact?: boolean
 }
 
 const ContactsContext = createContext<ContactsContextType | undefined>(
@@ -36,6 +37,7 @@ const ContactsContext = createContext<ContactsContextType | undefined>(
 
 export function ContactsProvider({ children }: { children: React.ReactNode }) {
   const [contacts, setContacts] = useState<Contact[]>(persons);
+  const [lastContact, setLastContact] = useState(false)
 
   const [currentContact, setCurrentContact] = useState<Contact | null>(
     contacts[0] || null,
@@ -85,7 +87,7 @@ export function ContactsProvider({ children }: { children: React.ReactNode }) {
     setCurrentContact,
     nextContact,
     skipContact,
-    snoozeContact,
+    snoozeContact
   };
 
   return (
